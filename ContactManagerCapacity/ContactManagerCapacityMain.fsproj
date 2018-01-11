@@ -61,6 +61,7 @@
     <None Include="App.config" />
     <Content Include="packages.config" />
     <None Include=".credentials" />
+    <EmbeddedResource Include="Resources.resx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AWSSDK.Core">
@@ -75,13 +76,16 @@
       <HintPath>..\packages\FSharp.Core.4.2.3\lib\net45\FSharp.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="FSharp.Data">
+      <HintPath>..\packages\FSharp.Data.2.4.3\lib\net45\FSharp.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
-  </ItemGroup>
-  <ItemGroup>
+    <Reference Include="System.Xml.Linq" />
     <ProjectReference Include="..\ContactManagerCapacityData\ContactManagerCapacityData.fsproj">
       <Name>ContactManagerCapacityData</Name>
       <Project>{f547c9a3-c9b1-48d6-a6d5-480c32e74239}</Project>

@@ -1,22 +1,33 @@
 ﻿namespace ContactManagerCapacity.Data.Models
 
-type Address(street : string, city : string, state : string, zipCode : string) =
+type AddressType(street : string, city : string, state : string, zipCode : string) =
     member this.Street = street
     member this.City = city
     member this.State = state
     member this.ZipCode = zipCode
 
-    new() = new Address("", "", "", "")
+    new() = new AddressType("", "", "", "")
 
-type Person(firstName : string, lastName : string, email : string, phoneNumber : string, address : Address) =
+type PersonType(firstName : string, lastName : string, email : string, phoneNumber : string, address : AddressType) =
     member this.FirstName = firstName
     member this.LastName = lastName
     member this.Email = email
     member this.PhoneNumber = phoneNumber
     member this.Address = address
 
-    new() = new Person("", "", "", "", new Address())
+    new() = new PersonType("", "", "", "", new AddressType())
 
-module Models =
+module Address =
+
+    open ContactManagerCapacity.Data.Seeder
+
+    let Seed seed =
+        let address = SeederModule.Address
+        new AddressType(address.[seed].[0], address.[seed].[1], address.[seed].[2], address.[seed].[3])
+
+module Person =
+
+    open ContactManagerCapacity.Data.Seeder
     
-    ()
+    let Seed seed =
+        new PersonType(SeederModule.FirstName.[seed], SeederModule.LastName.[seed], SeederModule.Email.[seed], SeederModule.PhoneNumber.[seed], Address.Seed seed)

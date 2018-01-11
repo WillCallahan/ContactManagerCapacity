@@ -10,15 +10,11 @@ module SNSNotificationService =
     let private TopicArn =
         ConfigurationManager.AppSettings.Item "AWSSNSTopicArn"
 
-    let private Region = 
-        Amazon.RegionEndpoint.USEast1
-
     let notify message = 
-        let amazonSnsClient = new AmazonSimpleNotificationServiceClient(CredentialProvider.AwsCredentials, Region)
+        let amazonSnsClient = new AmazonSimpleNotificationServiceClient(CredentialProvider.AwsCredentials, Amazon.RegionEndpoint.USEast1)
         amazonSnsClient.Publish(
             new PublishRequest(
                 TopicArn = TopicArn,
                 Message = message
             )
-        ) |> ignore
-        ()
+        ).ResponseMetadata.Metadata

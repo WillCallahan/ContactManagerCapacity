@@ -7,10 +7,13 @@ module CredentialProvider =
     open Amazon.Runtime.CredentialManagement
 
     let private AwsProfileName : string =
-        ConfigurationManager.AppSettings.Item "AWSSNSTopicArn"
+        ConfigurationManager.AppSettings.Item "AWSProfileName"
+
+    let private AwsProfileLocation : string =
+        ConfigurationManager.AppSettings.Item "AWSProfileLocation"
 
     let AwsCredentials =
-        let success, awsCredentials = (new CredentialProfileStoreChain(AwsProfileName)).TryGetAWSCredentials AwsProfileName
+        let success, awsCredentials = (new CredentialProfileStoreChain(AwsProfileLocation)).TryGetAWSCredentials AwsProfileName
         match success with
             | true -> awsCredentials
             | false -> raise (new InvalidOperationException("Cannot get AWS credentials"))
