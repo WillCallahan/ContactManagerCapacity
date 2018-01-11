@@ -9,6 +9,12 @@ module internal Main =
     open ContactManagerCapacity.Data.Serializer
     open ContactManagerCapacity.Main.SNS
 
+    [<Literal>]
+    let ContactsToAdd = 1000
+
+    [<Literal>]
+    let CapacityNotificationLimit = 100
+
     let personApiRepository = new PersonApiRepository()
 
     let addContact (i : int, notifyAt : int) =
@@ -25,6 +31,6 @@ module internal Main =
     [<EntryPoint>]
     let main argv = 
         printfn "Contact Capacity Program"
-        addContacts(10, 1) |> ignore
+        addContacts(ContactsToAdd, CapacityNotificationLimit) |> ignore
         Console.ReadKey() |> ignore
         0

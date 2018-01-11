@@ -60,7 +60,7 @@
     <Compile Include="Program.fs" />
     <None Include="App.config" />
     <Content Include="packages.config" />
-    <None Include=".credentials" />
+    <None Include="credentials" />
     <EmbeddedResource Include="Resources.resx" />
   </ItemGroup>
   <ItemGroup>

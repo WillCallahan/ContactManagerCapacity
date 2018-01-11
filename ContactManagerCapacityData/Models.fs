@@ -8,14 +8,14 @@ type AddressType(street : string, city : string, state : string, zipCode : strin
 
     new() = new AddressType("", "", "", "")
 
-type PersonType(firstName : string, lastName : string, email : string, phoneNumber : string, address : AddressType) =
+type PersonType(firstName : string, lastName : string, email : string, phoneNumber : string, addresses : List<AddressType>) =
     member this.FirstName = firstName
     member this.LastName = lastName
     member this.Email = email
     member this.PhoneNumber = phoneNumber
-    member this.Address = address
+    member this.Addresses = addresses
 
-    new() = new PersonType("", "", "", "", new AddressType())
+    new() = new PersonType("", "", "", "", [ new AddressType() ])
 
 module Address =
 
@@ -30,4 +30,4 @@ module Person =
     open ContactManagerCapacity.Data.Seeder
     
     let Seed seed =
-        new PersonType(SeederModule.FirstName.[seed], SeederModule.LastName.[seed], SeederModule.Email.[seed], SeederModule.PhoneNumber.[seed], Address.Seed seed)
+        new PersonType(SeederModule.FirstName.[seed], SeederModule.LastName.[seed], SeederModule.Email.[seed], SeederModule.PhoneNumber.[seed], [ Address.Seed seed ])
