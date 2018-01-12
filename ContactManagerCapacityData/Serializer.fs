@@ -1,5 +1,8 @@
 ﻿namespace ContactManagerCapacity.Data.Serializer
 
+/// <summary>
+/// (De)Serializes objects to and from JSON strings
+/// </summary>
 module JsonSerializer =
 
     open System.Runtime.Serialization

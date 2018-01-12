@@ -1,5 +1,8 @@
 ﻿namespace ContactManagerCapacity.Main.SNS
 
+/// <summary>
+/// Publishes messages to AWS SNS Topic
+/// </summary>
 module SNSNotificationService =
 
     open System.Configuration

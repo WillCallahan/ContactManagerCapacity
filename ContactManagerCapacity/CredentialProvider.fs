@@ -1,5 +1,8 @@
 ﻿namespace ContactManagerCapacity.Main.Credentials
 
+/// <summary>
+/// Provides credentials for accessing AWS resources
+/// </summary>
 module CredentialProvider =
 
     open System

@@ -2,6 +2,9 @@
 
 type private SeedType = Email | PhoneNumber | FirstName | LastName | Address
 
+/// <summary>
+/// Provides fake data for database population
+/// </summary>
 module SeederModule =
 
     open System
@@ -28,7 +31,6 @@ module SeederModule =
         match matcher.Success with
             | false -> raise (new ArgumentException("Seeder address information does not match Regex pattern"))
             | true -> [ for i in 1..4 -> matcher.Groups.[i].Value ]
-
 
     let FirstName =
         getFirstColumnOfCsv SeedType.FirstName
