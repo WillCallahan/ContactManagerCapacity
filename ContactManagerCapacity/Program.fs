@@ -10,17 +10,20 @@ module internal Main =
     open ContactManagerCapacity.Main.SNS
 
     [<Literal>]
-    let ContactsToAdd = 1000
+    let ContactsToAdd = 10
 
     [<Literal>]
-    let CapacityNotificationLimit = 100
+    let CapacityNotificationLimit = 1
 
     let personApiRepository = new PersonApiRepository()
 
     let addContact (i : int, notifyAt : int) =
-        personApiRepository.save (JsonSerializer.encode (Person.Seed i)) |> printfn "Added person %s"
+        i |> Person.Seed |> personApiRepository.save |> JsonSerializer.encode |> printfn "Added person %s"
         match i with
-            | i when i <> 0 && i % notifyAt = 0 -> (SNSNotificationService.notify personApiRepository.findAll |> ignore)
+            | i when i <> 0 && i % notifyAt = 0 -> (personApiRepository.findAll
+                                                        |> JsonSerializer.encode
+                                                        |> SNSNotificationService.notify 
+                                                        |> ignore)
         ()
 
     let addContacts (total : int, notifyAt : int) =
