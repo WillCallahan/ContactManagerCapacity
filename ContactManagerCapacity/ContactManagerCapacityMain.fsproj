@@ -61,7 +61,6 @@
     <None Include="App.config" />
     <Content Include="packages.config" />
     <None Include="credentials" />
-    <EmbeddedResource Include="Resources.resx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AWSSDK.Core">
