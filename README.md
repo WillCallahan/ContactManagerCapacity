@@ -4,7 +4,7 @@ This application operates by posting data to the [`contact-manager` API][contact
 When the application starts, up to 1000 threads will be created so that 1000 requests can be made to the
 API. For every 100 requests, a message will be published to an AWS SNS Topic.
 
-Application Entry Point: [ContactManagerCapacity\Main.fs](https://github.com/WillCallahan/ContactManagerCapacity/blob/master/ContactManagerCapacity/Program.fs)
+Application Entry Point: [ContactManagerCapacity\Main.fs#main](https://github.com/WillCallahan/ContactManagerCapacity/blob/master/ContactManagerCapacity/Main.fs)
 
 ## Configuration
 
