@@ -35,9 +35,12 @@ A connection to AWS SNS must be configured so that this application can operate.
 
 The application can be built using multiple methods. Use the following documentation to build the application.
 
-#### Visual Studio 2015+
+### Visual Studio 2015+
 
-##### Dependencies
+1. Open the project in Visual Studio
+2. In the Menu, click *Build > Rebuild Solution*
+
+#### Dependencies
 
 - Visual Studio 2015
 - F# SDK
